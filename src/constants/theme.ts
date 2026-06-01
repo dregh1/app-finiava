@@ -61,5 +61,44 @@ export const Spacing = {
   six: 64,
 } as const;
 
+// src/constants/theme.ts
+export const theme = {
+    colors: {
+        primary:        '#6C63FF',
+        primaryLight:   '#F0EEFF',
+        primaryDark:    '#4B44CC',
+        secondary:      '#FF6B35',
+        success:        '#4CAF50',
+        warning:        '#FFC107',
+        background:     '#F8F9FA',
+        card:           '#FFFFFF',
+        text:           '#2D2D2D',
+        textLight:      '#9E9E9E',
+        border:         '#E0E0E0',
+    },
+    spacing: {
+        xs:  4,
+        sm:  8,
+        md:  16,
+        lg:  24,
+        xl:  32,
+    },
+    radius: {
+        sm:  8,
+        md:  12,
+        lg:  16,
+        xl:  24,
+        full: 999,
+    },
+    shadow: {
+        shadowColor:   '#6C63FF',
+        shadowOffset:  { width: 0, height: 4 },
+        shadowOpacity: 0.15,
+        shadowRadius:  8,
+        elevation:     5,
+    },
+};
+
+
 export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
 export const MaxContentWidth = 800;

@@ -41,3 +41,22 @@ example
 # generated native folders
 /ios
 /android
+
+
+# Variables d'environnement (toutes, pas seulement .local)
+.env
+.env.*
+
+# Logs divers
+logs/
+*.log
+
+# Cache divers
+.cache/
+.turbo/
+
+# VS Code (optionnel, selon préférence d'équipe)
+.vscode/
+
+# Windows
+Thumbs.db
