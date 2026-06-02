@@ -42,7 +42,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "build:web": "expo export"
+    "build": "expo export"
   },
   "private": true
 }
