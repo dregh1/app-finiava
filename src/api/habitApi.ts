@@ -1,8 +1,7 @@
 // src/api/habitApi.ts
-import { API_URL } from '@env';
 import { CreateHabitRequest, Habit } from '../types/habit';
 
-const BASE_URL = API_URL;
+const BASE_URL = process.env.EXPO_PUBLIC_API_URL;
 
 export const habitApi = {
 
