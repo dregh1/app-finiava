@@ -13,8 +13,10 @@ import {
     View,
 } from 'react-native';
 import { habitApi } from '../api/habitApi';
+import DatePickerInput from '../components/DatePickerInput'; // ✅ Import du composant séparé
 import { theme } from '../constants/theme';
 
+// ─── Écran principal ──────────────────────────────────────────────────────────
 export default function AddHabitScreen() {
 
     const [description, setDescription] = useState('');
@@ -73,28 +75,21 @@ export default function AddHabitScreen() {
                             />
                         </View>
 
-                        {/* Dates côte à côte */}
+                        {/* ✅ Dates avec DatePickerInput */}
                         <View style={styles.dateRow}>
-                            <View style={[styles.inputGroup, { flex: 1, marginRight: 8 }]}>
-                                <Text style={styles.label}>📅 Début</Text>
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="YYYY-MM-DD"
-                                    placeholderTextColor={theme.colors.textLight}
-                                    value={startDate}
-                                    onChangeText={setStartDate}
-                                />
-                            </View>
-                            <View style={[styles.inputGroup, { flex: 1, marginLeft: 8 }]}>
-                                <Text style={styles.label}>🏁 Fin</Text>
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="YYYY-MM-DD"
-                                    placeholderTextColor={theme.colors.textLight}
-                                    value={endDate}
-                                    onChangeText={setEndDate}
-                                />
-                            </View>
+                            <DatePickerInput
+                                label="📅 Début"
+                                value={startDate}
+                                onChange={setStartDate}
+                                minimumDate={new Date()}
+                            />
+                            <View style={{ width: 16 }} />
+                            <DatePickerInput
+                                label="🏁 Fin"
+                                value={endDate}
+                                onChange={setEndDate}
+                                minimumDate={startDate ? new Date(startDate) : new Date()}
+                            />
                         </View>
 
                         {/* Conseils */}

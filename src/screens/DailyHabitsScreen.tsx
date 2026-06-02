@@ -24,7 +24,7 @@ export default function DailyHabitsScreen() {
 
     const loadHabits = useCallback(async () => {
         try {
-            const data = await habitApi.getAll();
+            const data = await habitApi.getStats('daily');
             setHabits(data);
         } catch (error) {
             console.error('Erreur chargement habitudes', error);
@@ -36,8 +36,9 @@ export default function DailyHabitsScreen() {
 
     useEffect(() => { loadHabits(); }, [loadHabits]);
 
-    const isCompletedToday = (habit: Habit): boolean =>
-        habit.completions.includes(today);
+    const isCompletedToday = (habit: Habit): boolean =>{    
+        return habit.completions.includes(today);
+    }
 
     const handleToggle = async (habit: Habit) => {
         if (isCompletedToday(habit)) return;
@@ -54,7 +55,7 @@ export default function DailyHabitsScreen() {
         ? completedCount / habits.length
         : 0;
 
-    // ✅ Emoji selon la progression
+    // Emoji selon la progression
     const getMoodEmoji = () => {
         if (progressRate === 0)   return '😴';
         if (progressRate < 0.5)   return '💪';

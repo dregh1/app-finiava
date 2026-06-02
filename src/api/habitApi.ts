@@ -1,13 +1,18 @@
 // src/api/habitApi.ts
+import { API_URL } from '@env';
 import { CreateHabitRequest, Habit } from '../types/habit';
 
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL = API_URL;
 
 export const habitApi = {
 
     // Récupérer toutes les habitudes
     getAll: async (): Promise<Habit[]> => {
         const response = await fetch(`${BASE_URL}/habits`);
+        return response.json();
+    },
+    getStats: async (period: string): Promise<Habit[]> => {
+        const response = await fetch(`${BASE_URL}/habits/stats?period=${period}`);
         return response.json();
     },
 
@@ -32,7 +37,7 @@ export const habitApi = {
     // Stats entre deux dates
     getStatsBetween: async (start: string, end: string): Promise<Habit[]> => {
         const response = await fetch(
-            `${BASE_URL}/habits/stats?start=${start}&end=${end}`
+            `${BASE_URL}/habits/stats/range?start=${start}&end=${end}`
         );
         return response.json();
     },
